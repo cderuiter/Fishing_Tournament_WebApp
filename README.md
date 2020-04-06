@@ -1,2 +1,2 @@
-# Fishing Tournament Management System WebApp
+# Fishing Tournament Management WebApp
 This project is a Django web application for managing fishing tournaments. This system will allow those hosting fishing tournaments to organize and manage data pertaining to the tournament such as locations, sponsors, registered anglers, and registered teams. The system will also enable tournament officials to insert, update, and delete data pertaining to the fish caught by the anglers during the tournament in real time.
