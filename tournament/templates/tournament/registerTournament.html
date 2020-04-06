@@ -1,0 +1,29 @@
+{% extends "tournament/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<div class="media">
+			<div class="media-body">
+			</div>
+		</div>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Tournament Info</legend>
+				{{ reg_trn_form|crispy }}
+				{{ reg_lc_form|crispy }}
+
+				{% if spn_opt_form %}
+				{{ spn_opt_form|crispy }}
+				{% endif %}
+
+				{% if reg_spn_form %}
+				{{ reg_spn_form|crispy }}
+				{% endif %}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

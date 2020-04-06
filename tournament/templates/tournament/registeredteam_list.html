@@ -1,0 +1,38 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+{% for team in teams %}
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+
+			<a class="mr-4 mb-2" type="button" onclick="showList()"><h2>{{ team.Team.Team_Name }}</h2></a>
+
+
+			<ul id="list" class="list-group list-group-flush">
+				{% for angler in anglers %}
+				{% if angler.Team == team.Team %}
+				<li class="list-group-item" href="#">{{ angler.First_Name }} {{ angler.Last_Name }}</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	{% if user.is_authenticated %}
+	<a class="btn btn-secondary btn-sm mt-1 mb-1 float-right" href="{% url 'ang-create' team.Team.team_id %}">Add Angler</a>
+	{% endif %}
+</article>
+<script>
+	function showList() {
+        var list = document.getElementById("list");
+    if (list.style.display == "none"){
+        list.style.display = "block";
+    }else{
+        list.style.display = "none";
+    }
+}
+</script>
+{% endfor %}
+{% endblock content %}
+
+
+

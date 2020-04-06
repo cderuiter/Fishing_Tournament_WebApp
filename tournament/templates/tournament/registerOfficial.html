@@ -1,0 +1,20 @@
+{% extends "tournament/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<div class="media">
+			<div class="media-body">
+			</div>
+		</div>
+		<form method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Tournament Official Info</legend>
+				{{ reg_ofc_form | crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

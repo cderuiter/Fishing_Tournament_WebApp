@@ -1,0 +1,16 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+{% for tournament in tournaments %}
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+			<a class="mr-2" type="button">{{ tournament.Tournament_Name }}</a>
+			<small class="text-muted">{{ tournament.Tournament_Date|date:"F d, Y" }}</small>
+		</div>
+		<h2><a class="article-title" href="{% url 'trn-detail' tournament.trn_id %}">{{ tournament.Tournament_Name }}</a></h2>
+		<hr>
+	</div>
+</article>
+{% endfor %}
+{% endblock content %}
+

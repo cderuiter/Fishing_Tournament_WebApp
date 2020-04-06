@@ -1,0 +1,24 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+<div class="d-flex justify-content-around mb-2">
+	<h2><a class="article-title" href="#">Tournament Rules</a></h2>
+</div>
+{% if user.is_authenticated %}
+<a type="button" class="btn btn-primary btn-md btn-block mb-3" href="{% url 'create-rule' trn.trn_id %}">Add a Rule</a>
+{% endif %}
+{% for rule in rules %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">{{ rule.Fish.Fish_Type }}</a>
+		</h4>
+
+		<div class="article-metadata">
+			<small class="text-muted">Minimum Fish Length: {{ rule.Minimum_Fish_Length }} Inches</small>
+			<br>
+			<small class="text-muted">Minimum Fish Weight: {{ rule.Minimum_Fish_Weight }} Lbs</small>
+		</div>
+
+	</div>
+</article>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+			<a class="mr-2" href="#">{{ tournament.Tournament_Name }}</a>
+			<small class="text-muted">{{ tournament.Tournament_Date|date:"F d, Y" }}</small>
+		</div>
+		<h2 class="article-title">{{ tournament.Tournament_Name }}</h2>
+		<h4 class="article-title">Tournament Date: {{ tournament.Tournament_Date|date:"F d, Y" }}</h4>
+		<hr>
+		{% if tournament.Location %}
+		<h4 class="article-title">Tournament Location:</h4>
+		{% endif %}
+		{% if tournament.Location.State %}
+		<h6 class="article-title">State: {{ tournament.Location.State }}</h6>
+		{% endif %}
+		{% if tournament.Location.County %}
+		<h6 class="article-title">County: {{ tournament.Location.County }}</h6>
+		{% endif %}
+		{% if tournament.Location.Lake %}
+		<h6 class="article-title">Lake: {{ tournament.Location.Lake }}</h6>
+		{% endif %}
+		<hr>
+
+		{% if tournament.Tournament_Entry_Fee %}
+		<h4 class="article-title">Tournament Details:</h4>
+		<h6 class="article-title">Entry Fee: {{ tournament.Tournament_Entry_Fee }}</h6>
+		{% endif %}
+		{% if tournament.Tournament_First_Prize %}
+		<h6 class="article-title">First Prize: {{ tournament.Tournament_First_Prize }}</h6>
+		{% endif %}
+		{% if tournament.Tournament_Second_Prize %}
+		<h6 class="article-title">Second Prize: {{ tournament.Tournament_Second_Prize }}</h6>
+		{% endif %}
+		{% if tournament.Tournament_Third_Prize %}
+		<h6 class="article-title">Third Prize: {{ tournament.Tournament_Third_Prize }}</h6>
+		{% endif %}
+		<hr>
+
+		{% if tournament.Sponsor %}
+		<h4 class="article-title">Tournament Sponsor:</h4>
+		<h6 class="article-title">Sponsor: {{ tournament.Sponsor.Sponsor_Name }}</h6>
+		{% endif %}
+
+
+		<div>
+			{% if user.is_authenticated %}
+			{% if not tournament.Location %}
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Add Location</a>
+			{% endif %}
+			{% if not tournament.Sponsor %}
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="#">Add Sponsor</a>
+			{% endif %}
+			{% endif %}
+
+		</div>
+		<hr>
+		<div>
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'team-list' tournament.trn_id %}">Teams</a>
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'caught-fish-list' tournament.trn_id %}">Standings</a>
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'rule-list' tournament.trn_id %}">Tournament Rules</a>
+		</div>
+		<hr>
+		<div>
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'team-create' tournament.trn_id %}">Register Team</a>
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'trn-ofc-create' tournament.trn_id %}">Register as Official</a>
+			{% if user.is_authenticated %}
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'create-rule' tournament.trn_id %}">Add Tournament Rule</a>
+			{% endif %}
+			{% if user.is_authenticated %}
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'enter-caught-fish' tournament.trn_id %}">Enter Caught Fish</a>
+			{% endif %}
+		</div>
+		<hr>
+		<div>
+			{% if user.is_authenticated %}
+			<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'trn-update' tournament.trn_id %}">Update</a>
+			<a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'trn-delete' tournament.trn_id %}">Delete</a>
+			{% endif %}
+
+		</div>
+
+	</div>
+</article>
+{% endblock content %}

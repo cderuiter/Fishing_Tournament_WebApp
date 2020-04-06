@@ -1,0 +1,26 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+<div class="d-flex justify-content-around mb-2">
+	<h2><a class="article-title" href="#">Fish Central</a></h2>
+
+</div>
+{% if user.is_authenticated %}
+<a type="button" class="btn btn-primary btn-md btn-block mb-3" href="{% url 'fish-create' %}">Add a Fish</a>
+{% endif %}
+{% for fish in fishlist %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">{{ fish.Fish_Type }}</a>
+		<a class="btn btn-secondary btn-sm mt-1 mb-1 float-right" href="{% url 'fish-update' fish.fish_id %}">Update</a>
+		</h4>
+
+		<div class="article-metadata">
+			<small class="text-muted">Average Fish Length: {{ fish.Average_Fish_Length }} Inches</small>
+			<br>
+			<small class="text-muted">Average Fish Weight: {{ fish.Average_Fish_Weight }} Lbs</small>
+		</div>
+
+	</div>
+</article>
+{% endfor %}
+{% endblock content %}

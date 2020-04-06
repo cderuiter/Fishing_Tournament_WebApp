@@ -1,0 +1,23 @@
+<!--This template is called by path('tournament/<int:pk>/update/', TrnUpdateView.as_view(), name='trn-update') -->
+{% extends "tournament/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Update Tournament</legend>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Save</button>
+				{% if object.Location.loc_id %}
+				<a class="btn btn-outline-info" href="{% url 'loc-update' object.Location.loc_id %}">Update Location</a>
+				{% endif %}
+				{% if object.Sponsor.spons_id %}
+				<a class="btn btn-outline-info" href="{% url 'spn-update' object.Sponsor.spons_id %}">Update Sponsor</a>
+				{% endif %}
+			</div>
+		</form>
+	</div>
+{% endblock content %}

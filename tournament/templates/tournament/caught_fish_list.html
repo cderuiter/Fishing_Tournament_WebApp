@@ -1,0 +1,40 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+<div class="d-flex justify-content-around mb-2">
+	<h2><a class="article-title" href="#">Standings</a></h2>
+
+</div>
+{% if CaughtFish %}
+{% for fish in CaughtFish %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">{{ fish.Fish }}</a>
+
+		</h4>
+
+		<div class="article-metadata">
+			<small class="text-muted">Fish Length: {{ fish.Fish_Length }} Inches</small>
+			<br>
+			<small class="text-muted">Fish Weight: {{ fish.Fish_Weight }} Lbs</small>
+			<br>
+			<small class="text-muted">Angler: {{ fish.Angler }}</small>
+			<br>
+			<small class="text-muted">Team: {{ fish.Team }}</small>
+			<br>
+			<small class="text-muted">Tournament: {{ fish.Tournament }}</small>
+		</div>
+
+	</div>
+</article>
+{% endfor %}
+{% else %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">No Results</a>
+		</h4>
+	</div>
+</article>
+
+{% endif %}
+
+{% endblock content %}

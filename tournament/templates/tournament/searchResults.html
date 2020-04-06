@@ -1,0 +1,85 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+<div class="d-flex justify-content-around mb-2">
+	<h2><a class="article-title" href="#">Search Results</a></h2>
+
+</div>
+{% if CaughtFish %}
+<h3><a class="article-title" href="#">Caught Fish</a></h3>
+{% for fish in CaughtFish %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">{{ fish.Fish }}</a>
+		</h4>
+		<div class="article-metadata">
+			<small class="text-muted">Fish Length: {{ fish.Fish_Length }} Inches</small>
+			<br>
+			<small class="text-muted">Fish Weight: {{ fish.Fish_Weight }} Lbs</small>
+			<br>
+			<small class="text-muted">Angler: {{ fish.Angler }}</small>
+			<br>
+			<small class="text-muted">Team: {{ fish.Team }}</small>
+			<br>
+			<small class="text-muted">Tournament: {{ fish.Tournament }}</small>
+		</div>
+
+	</div>
+</article>
+{% endfor %}
+{% endif %}
+
+{% if Tournaments %}
+<h3><a class="article-title" href="#">Tournaments</a></h3>
+{% for tournament in Tournaments %}
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+			<a class="mr-2" type="button">{{ tournament.Tournament_Name }}</a>
+			<small class="text-muted">{{ tournament.Tournament_Date|date:"F d, Y" }}</small>
+		</div>
+		<h2><a class="article-title" href="{% url 'trn-detail' tournament.trn_id %}">{{ tournament }}</a></h2>
+		<hr>
+	</div>
+</article>
+{% endfor %}
+{% endif %}
+
+{% if Teams %}
+<h3><a class="article-title" href="#">Teams</a></h3>
+{% for team in Teams %}
+<article class="media content-section">
+	<div class="media-body">
+		<div class="article-metadata">
+			<a class="mr-4 mb-2" type="button" onclick="showList()"><h2>{{ team }}</h2></a>
+		</div>
+	</div>
+</article>
+{% endfor %}
+{% endif %}
+
+
+{% if Anglers %}
+<h3><a class="article-title" href="#">Anglers</a></h3>
+{% for angler in Anglers %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">{{ angler.First_Name }} {{ angler.Last_Name }}</a></h4>
+		<div class="article-metadata">
+			<small class="text-muted">Team: {{ angler.Team.Team_Name }}</small>
+			<br>
+		</div>
+	</div>
+</article>
+{% endfor %}
+{% endif %}
+
+{% if not CaughtFish and not Anglers and not Teams and not Tournaments %}
+<article class="media content-section">
+	<div class="media-body">
+		<h4><a class="article-title" href="#">No Results</a>
+		</h4>
+	</div>
+</article>
+{% endif %}
+
+{% endblock content %}
