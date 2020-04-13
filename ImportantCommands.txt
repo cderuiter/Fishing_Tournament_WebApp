@@ -1,8 +1,0 @@
-Package Installations:
-pip install mysqlclient
-pip install crispy-froms
-pip install pillow
-
-
-Connect to a windows mysql server using Ubuntu WSL
-mysql -u root -p --host=localhost --port=3306 --protocol=TCP
