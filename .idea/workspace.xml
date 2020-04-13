@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a591d505-84d1-44f8-a2a1-0dce59298ca8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImportantCommands.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NFA_Project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NFA_Project/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

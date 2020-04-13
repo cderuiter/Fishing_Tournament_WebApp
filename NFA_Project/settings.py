@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'nfa_db',
         'USER': 'root',
-        'PASSWORD': '', # Enter your password
+        'PASSWORD': 'RespectTheMan', # Enter your password
         'PROTOCOL': 'TCP',
         'HOST': '127.0.0.1',
         'PORT': '3306',
