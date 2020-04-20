@@ -77,9 +77,9 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nfa_db',
+        'NAME': 'nfa_db_dev',
         'USER': 'root',
-        'PASSWORD': 'RespectTheMan', # Enter your password
+        'PASSWORD': 'NFA_Password', # Enter your password
         'PROTOCOL': 'TCP',
         'HOST': '127.0.0.1',
         'PORT': '3306',
